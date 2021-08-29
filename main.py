@@ -172,7 +172,8 @@ def reverse(atom):
 def deep_reverse(regex):
     """
     Reverses completely a regex expression. This is the function you need to
-    call as a user.
+    call as a user. The "head-operator-rest" takes its inspiration from the
+    following video: https://www.youtube.com/watch?v=fgp0tKWYQWY
     """
     if regex == "":
         return ""
