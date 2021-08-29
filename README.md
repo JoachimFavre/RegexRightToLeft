@@ -18,3 +18,8 @@ Turns a regular expression into one that would work the same on a reversed strin
 
 ## How to use
 To only reverse a regular expression, you can call the ```deep_reverse(regex)``` function. If you need an example on how to use a reversed regular expression, you can take a look at the ```find_last(regex, string)``` function.
+
+## Examples
+This program turns:
+- ```he*llo\.``` to ```\.olle*h```
+- ```(?<!(micro|macro))biologist``` to ```tsigoloib(?!(orcim|orcam))```
