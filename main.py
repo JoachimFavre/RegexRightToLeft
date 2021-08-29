@@ -14,10 +14,6 @@ Created on Sun Aug 29 22:01:21 2021
 """
 import re
 
-# Use r-string so that \ is not used to escape characters but rather as a
-# character in itself
-REGEX_TO_CONVERT = (r"((?:(?:\d+|(?:\\?[A-Za-z]+)+)(?:[\^_](?:\{.*\}|[A-Za-z0-9]|\\[A-Za-z]+)){0,2})+)\/")
-STRING_TO_SEARCH = ("")
 
 REVERSE_GROUP_OPERATOR = {"": "",  # default case
                           "?:": "?:",  # anonym group
@@ -198,7 +194,3 @@ def find_last(regex, string):
     reversed_result = match.group(0)
     result = reversed_result[::-1]
     return result
-
-
-print(deep_reverse(REGEX_TO_CONVERT))
-print(find_last(REGEX_TO_CONVERT, r"1 + 3\pi^2/"))
