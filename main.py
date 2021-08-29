@@ -20,7 +20,7 @@ REVERSE_GROUP_OPERATOR = {"": "",  # default case
                           "?=": "?<=",  # positive lookafter
                           "?<=": "?=",  # positive lookbehind
                           "?!": "?<!",  # negative lookafter
-                          "?<!": "?<"}  # negative lookbehind
+                          "?<!": "?!"}  # negative lookbehind
 
 
 class ParseException(Exception):
