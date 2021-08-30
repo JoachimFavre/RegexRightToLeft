@@ -16,7 +16,7 @@ import re
 
 
 REVERSE_GROUP_OPERATOR = {"": "",  # default case
-                          "?:": "?:",  # anonym group
+                          "?:": "?:",  # non-capturing group
                           "?=": "?<=",  # positive lookafter
                           "?<=": "?=",  # positive lookbehind
                           "?!": "?<!",  # negative lookafter
@@ -49,14 +49,22 @@ def extract_operator(regex):
     or {...}) from the very beginning of a regular expression.
     Returns {operator}, {rest of the regular expression}
     """
-    if regex == "":
-        return "", regex
-    if regex[0] in ["*", "+", "?"]:
-        return regex[0], regex[1:]
-    if regex[0] == "{":
-        end_point = get_closing_bracket_index(regex, "{", "}") + 1
-        return regex[:end_point], regex[end_point:]
-    return "", regex
+    operator = ""
+    rest = regex
+    if regex != "":
+        if regex[0] in ["*", "+", "?"]:
+            operator = regex[0]
+            rest = regex[1:]
+        if regex[0] == "{":
+            end_point = get_closing_bracket_index(regex, "{", "}") + 1
+            operator = regex[:end_point]
+            rest = regex[end_point:]
+
+    if rest != "":
+        if rest[0] in ["?", "+"]:   # lazy or greedy possessive
+            operator += rest[0]
+            rest = rest[1:]
+    return operator, rest
 
 
 def get_closing_bracket_index(regex, opening, closing):
@@ -177,8 +185,18 @@ def deep_reverse(regex):
     """
     if regex == "":
         return ""
+
+    start = ""
+    end = ""
+    if regex[0] == "^":
+        end = "$"
+        regex = regex[1:]
+    if regex[-1] == "$":
+        start = "^"
+        regex = regex[:-1]
+
     head, operator, rest = split(regex)
-    return deep_reverse(rest) + reverse(head) + operator
+    return start + deep_reverse(rest) + reverse(head) + operator + end
 
 
 def find_last(regex, string):
