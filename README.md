@@ -4,6 +4,7 @@ Turns a regular expression into one that would work the same on a reversed strin
 
 ## Features
 - Regex atoms
+  - Anchors: ^, $
   - Single characters (called units in the program)
   - Escaped characters
   - Intervals
@@ -11,6 +12,7 @@ Turns a regular expression into one that would work the same on a reversed strin
 - Repetition operators
   - Single characters: *, +, ?
   - Braces-repetition, such as {2,3}
+  - Lazy and greedy possessive operators, such as "??" or "{2,}+"
 - Group operators
   - Anonymous group: ?:
   - Positive/negative lookafter: ?= / ?!
@@ -23,6 +25,7 @@ To only reverse a regular expression, you can call the ```deep_reverse(regex)```
 This program turns:
 - ```he*llo\.``` to ```\.olle*h```
 - ```(?<!(micro|macro))biologist``` to ```tsigoloib(?!(orcim|orcam))```
+- ```^abcd{2,}?e``` to ```ed{2,}?cba$```
 
 ## Disclaimer
-This program was made in two hours, there are bugs I have no doubt about it. What I have tested seems to work, but still there must be some problems. Moreover, I have learnt regex as an autodidact, so the vocabulary I am using may not always be the right one. The probability that anyone reads those lines is very small, but still, if you see a mistake do not hesitate to point it out to me. 
+This program was made in two hours, there are bugs I have no doubt about it. What I have tested seems to work, but it would be strange if there was no problem. Moreover, I have learnt regex as an autodidact, so the vocabulary I am using may not always be the right one. The probability that anyone reads those lines is very small, but still, if you see a mistake do not hesitate to point it out to me. 
