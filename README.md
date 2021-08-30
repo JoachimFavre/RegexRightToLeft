@@ -14,7 +14,7 @@ Turns a regular expression into one that would work the same on a reversed strin
   - Braces-repetition, such as {2,3}
   - Lazy and greedy possessive operators, such as "??" or "{2,}+"
 - Group operators
-  - Anonymous group: ?:
+  - Non-capturing group: ?:
   - Positive/negative lookafter: ?= / ?!
   - Positive/negative lookbehind: ?<= / ?<!
 
