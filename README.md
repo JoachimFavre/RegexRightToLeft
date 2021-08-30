@@ -23,3 +23,6 @@ To only reverse a regular expression, you can call the ```deep_reverse(regex)```
 This program turns:
 - ```he*llo\.``` to ```\.olle*h```
 - ```(?<!(micro|macro))biologist``` to ```tsigoloib(?!(orcim|orcam))```
+
+## Disclaimer
+This program was made in two hours, there are bugs I have no doubt about it. What I have tested seems to work, but still there must be some problems. Moreover, I have learnt regex as an autodidact, so the vocabulary I am using may not always be the right one. The probability that anyone reads those lines is very small, but still, if you see a mistake do not hesitate to point it out to me. 
